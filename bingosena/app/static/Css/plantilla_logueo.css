@@ -1,0 +1,202 @@
+/* ================================
+   CONTENEDOR PRINCIPAL
+================================ */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    padding: 20px;
+}
+
+.auth-wrapper {
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+}
+
+/* Selector de formulario */
+.auth-selector {
+    display: flex;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    margin-bottom: -1px;
+    z-index: 2;
+    position: relative;
+}
+
+.auth-tab {
+    flex: 1;
+    padding: 15px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.auth-tab.active {
+    background: #fff;
+    color: #4F46E5;
+}
+
+/* Contenedor de formularios */
+.auth-forms {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+}
+
+/* Formularios */
+.auth-form {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s ease;
+    z-index: 1;
+}
+
+.auth-form.active {
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 2;
+}
+
+.auth-form-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    color: #000;
+    margin-bottom: 1.5rem;
+}
+
+/* Campos de entrada */
+.auth-input-container {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.auth-input-container input {
+    background-color: #fff;
+    padding: 1rem;
+    padding-right: 3rem;
+    font-size: 0.9rem;
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.auth-input-container input:focus {
+    border-color: #4F46E5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+.auth-input-container span {
+    display: grid;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    place-content: center;
+}
+
+.auth-input-container span svg {
+    color: #9CA3AF;
+    width: 1rem;
+    height: 1rem;
+    transition: color 0.3s ease;
+}
+
+.auth-input-container input:focus + span svg {
+    color: #4F46E5;
+}
+
+/* Botón de envío */
+.auth-submit {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    background-color: #4F46E5;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    width: 100%;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.auth-submit:hover {
+    background-color: #4338CA;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+/* Enlace de cambio de formulario */
+.auth-link {
+    color: #6B7280;
+    font-size: 0.875rem;
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.auth-link a {
+    color: #4F46E5;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.auth-link a:hover {
+    color: #4338CA;
+    text-decoration: underline;
+}
+
+/* Animaciones para el cambio de formularios */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .auth-form {
+        padding: 1.5rem;
+    }
+    
+    .auth-form-title {
+        font-size: 1.25rem;
+    }
+}

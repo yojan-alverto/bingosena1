@@ -1,0 +1,134 @@
+{% load static %}
+{% include 'inc/Header.html' %}
+<title>Bingo Sena - Seleccionar Tablas</title>
+<link rel="stylesheet" href="{% static 'Css/selecionar_tablas.css' %}">
+<div class="tablas-container">
+    <div class="tablas-wrapper">
+        <!-- Encabezado -->
+        <div class="tablas-header text-center mb-4">
+            <h1 class="text-warning"><i class="bi bi-grid-3x3-gap"></i> Preparar Juego de Bingo</h1>
+            <p class="text-light">Personaliza tu experiencia de juego</p>
+        </div>
+
+        <!-- Instrucciones -->
+        <div class="instructions-card card mb-4">
+            <div class="card-header bg-warning text-dark">
+                <h5 class="mb-0"><i class="bi bi-info-circle"></i> Instrucciones</h5>
+            </div>
+            <div class="card-body">
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item">Selecciona hasta 8 tablas para jugar</li>
+                    <li class="list-group-item">Elige el color de tus tablas: 🔴🔵💛💚</li>
+                    <li class="list-group-item">Selecciona el icono para marcar números: ⭐🦖👻💎</li>
+                    <li class="list-group-item">Marca los números cuando salgan en el sorteo</li>
+                    <li class="list-group-item">¡Gana al completar una línea o toda la tabla! 🏆</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Panel de selección de tablas -->
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-header bg-dark text-warning">
+                        <h5 class="mb-0"><i class="bi bi-table"></i> Selecciona tus tablas (Máximo: 8)</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="tablas-grid" id="tablasGrid">
+                            <!-- Las tablas se generarán con JavaScript -->
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div class="tablas-counter">
+                                <span id="selectedCount">0</span> de 8 tablas seleccionadas
+                            </div>
+                            <button class="btn btn-sm btn-outline-secondary" id="selectAllBtn">
+                                <i class="bi bi-check-all"></i> Seleccionar todas
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel de personalización -->
+            <div class="col-lg-4">
+                <!-- Selector de color -->
+                <div class="card mb-4">
+                    <div class="card-header bg-dark text-warning">
+                        <h5 class="mb-0"><i class="bi bi-palette"></i> Color de tablas</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="color-selector">
+                            <div class="color-option active" data-color="red" style="background-color: #dc3545;">
+                                <i class="bi bi-circle-fill"></i> Rojo
+                            </div>
+                            <div class="color-option" data-color="blue" style="background-color: #0d6efd;">
+                                <i class="bi bi-circle-fill"></i> Azul
+                            </div>
+                            <div class="color-option" data-color="yellow" style="background-color: #ffc107;">
+                                <i class="bi bi-circle-fill"></i> Amarillo
+                            </div>
+                            <div class="color-option" data-color="green" style="background-color: #198754;">
+                                <i class="bi bi-circle-fill"></i> Verde
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Selector de iconos -->
+                <div class="card mb-4">
+                    <div class="card-header bg-dark text-warning">
+                        <h5 class="mb-0"><i class="bi bi-emoji-sunglasses"></i> Icono para marcar</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="icon-selector">
+                            <div class="icon-option active" data-icon="star">
+                                <i class="bi bi-star-fill"></i> Estrella
+                            </div>
+                            <div class="icon-option" data-icon="dino">
+                                <i class="bi bi-tree-fill"></i> Dinosaurio
+                            </div>
+                            <div class="icon-option" data-icon="ghost">
+                                <i class="bi bi-cloud-fog"></i> Fantasma
+                            </div>
+                            <div class="icon-option" data-icon="diamond">
+                                <i class="bi bi-diamond-fill"></i> Diamante
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botón de inicio -->
+                <button class="btn btn-warning btn-lg w-100 py-3" id="startGameBtn" disabled>
+                    <i class="bi bi-play-circle"></i> Iniciar Juego
+                </button>
+            </div>
+        </div>
+
+        <!-- Vista previa de tabla -->
+        <div class="card mt-4">
+            <div class="card-header bg-dark text-warning">
+                <h5 class="mb-0"><i class="bi bi-eye"></i> Vista previa de tu tabla</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-preview">
+                    <div class="bingo-preview-header">
+                        <div class="preview-letter">B</div>
+                        <div class="preview-letter">I</div>
+                        <div class="preview-letter">N</div>
+                        <div class="preview-letter">G</div>
+                        <div class="preview-letter">O</div>
+                    </div>
+                    <div class="bingo-preview-grid" id="previewGrid">
+                        <!-- Vista previa generada por JS -->
+                    </div>
+                    <div class="preview-info mt-3 text-center">
+                        <small class="text-muted">Color: <span id="previewColor">Rojo</span> | Icono: <span id="previewIcon">Estrella</span></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'Js/selecionar_tablas.js' %}"></script>
+{% include 'inc/Footer.html' %}

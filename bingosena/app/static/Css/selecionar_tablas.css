@@ -1,0 +1,186 @@
+/* ================================
+   CONTENEDOR PRINCIPAL
+================================ */
+.tablas-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    padding: 20px;
+}
+
+.tablas-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Tarjeta de instrucciones */
+.instructions-card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.instructions-card .list-group-item {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 1.25rem;
+}
+
+.instructions-card .list-group-item:last-child {
+    border-bottom: none;
+}
+
+/* Grid de tablas */
+.tablas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.tabla-item {
+    position: relative;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.tabla-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tabla-item.selected {
+    border-color: #ffc107;
+    background-color: rgba(255, 193, 7, 0.1);
+}
+
+.tabla-item.selected::after {
+    content: '✓';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 25px;
+    height: 25px;
+    background: #ffc107;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.tabla-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0f3460;
+}
+
+.tabla-info {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+/* Selectores de color e icono */
+.color-selector, .icon-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.color-option, .icon-option {
+    padding: 10px;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.color-option {
+    color: white;
+    font-weight: bold;
+}
+
+.icon-option {
+    background: white;
+}
+
+.color-option:hover, .icon-option:hover {
+    transform: scale(1.05);
+}
+
+.color-option.active, .icon-option.active {
+    border-color: #ffc107;
+    box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.3);
+}
+
+/* Vista previa de tabla */
+.table-preview {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.bingo-preview-header {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.preview-letter {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+    color: #000;
+    font-weight: 800;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+.bingo-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 5px;
+}
+
+.preview-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.preview-cell.free {
+    background: #ffc107;
+    color: #000;
+}
+
+/* Contador de tablas */
+.tablas-counter {
+    font-weight: bold;
+    color: #ffc107;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tablas-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+    
+    .color-selector, .icon-selector {
+        grid-template-columns: 1fr;
+    }
+}

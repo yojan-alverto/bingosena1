@@ -1,0 +1,312 @@
+/* Contenedor principal aislado */
+.main-content {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1f293a;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  isolation: isolate;
+}
+
+/* Contenedor de animación específico - MÁS GRANDE */
+.animation-container {
+  position: relative;
+  width: 500px; /* Más ancho */
+  height: 500px; /* Más alto */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.animation-container span {
+  position: absolute;
+  left: 0;
+  width: 38px; /* Un poco más ancho */
+  height: 7px; /* Un poco más alto */
+  background: #2c4766;
+  border-radius: 80px;
+  transform-origin: 250px; /* Ajustado al nuevo tamaño (mitad del width) */
+  transform: rotate(calc(var(--i) * (360deg / 50)));
+  animation: isolated-blink 3s linear infinite;
+  animation-delay: calc(var(--i) * (3s / 50));
+  z-index: 0;
+}
+
+@keyframes isolated-blink {
+  0% {
+    background: #0ef;
+  }
+  25% {
+    background: #2c4766;
+  }
+}
+
+.login-box {
+  position: absolute;
+  width: 75%; /* Un poco menos ancho para que quepa mejor */
+  max-width: 320px;
+  z-index: 10;
+  padding: 30px 25px;
+  border-radius: 20px;
+  background: rgba(31, 41, 58, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.6);
+}
+
+.login-box form {
+  width: 100%;
+  padding: 0 5px;
+}
+
+.login-box h2 {
+  font-size: 2em;
+  color: #0ef;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.input-box {
+  position: relative;
+  margin: 35px 0;
+}
+
+.input-box input {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: 2px solid #2c4766;
+  outline: none;
+  border-radius: 40px;
+  font-size: 1.1em;
+  color: #fff;
+  padding: 0 20px;
+  transition: 0.5s ease;
+  box-sizing: border-box;
+}
+
+.input-box input:focus {
+  border-color: #0ef;
+  box-shadow: 0 0 15px rgba(0, 238, 255, 0.3);
+}
+
+.input-box input[value]:not([value=""]) ~ label,
+.input-box input:focus ~ label {
+  top: -12px;
+  font-size: 0.85em;
+  background: #1f293a;
+  padding: 0 8px;
+  color: #0ef;
+}
+
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  font-size: 1.1em;
+  pointer-events: none;
+  transition: 0.5s ease;
+  color: #fff;
+}
+
+/* Estilos para el botón original (sin modificar) */
+.btn-primary.pulse {
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1em;
+  padding: 12px 0;
+}
+
+.instruction-text {
+  margin: 20px 0 10px;
+  text-align: center;
+}
+
+.instruction-text p {
+  font-size: 0.9em;
+  color: #fff;
+  line-height: 1.5;
+  opacity: 0.9;
+  padding: 0 10px;
+}
+
+/* Ajustes responsivos para tablets */
+@media (max-width: 992px) {
+  .animation-container {
+    width: 450px;
+    height: 450px;
+  }
+  
+  .animation-container span {
+    transform-origin: 225px;
+    width: 36px;
+  }
+}
+
+/* Ajustes responsivos para tablets pequeñas */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 30px 15px;
+    min-height: calc(100vh - 100px);
+  }
+  
+  .animation-container {
+    width: 400px;
+    height: 400px;
+  }
+  
+  .animation-container span {
+    transform-origin: 200px;
+    width: 32px;
+  }
+  
+  .login-box {
+    width: 80%;
+    padding: 25px 20px;
+  }
+  
+  .login-box h2 {
+    font-size: 1.8em;
+    margin-bottom: 25px;
+  }
+  
+  .input-box {
+    margin: 30px 0;
+  }
+}
+
+/* Ajustes responsivos para móviles grandes */
+@media (max-width: 576px) {
+  .animation-container {
+    width: 350px;
+    height: 350px;
+  }
+  
+  .animation-container span {
+    transform-origin: 175px;
+    width: 28px;
+    height: 6px;
+  }
+  
+  .login-box {
+    width: 85%;
+    padding: 22px 18px;
+  }
+  
+  .login-box h2 {
+    font-size: 1.6em;
+  }
+  
+  .input-box input {
+    height: 45px;
+    font-size: 1em;
+    padding: 0 18px;
+  }
+  
+  .btn-primary.pulse {
+    font-size: 1em;
+    padding: 11px 0;
+  }
+}
+
+/* Ajustes responsivos para móviles pequeños */
+@media (max-width: 480px) {
+  .animation-container {
+    width: 320px;
+    height: 320px;
+  }
+  
+  .animation-container span {
+    transform-origin: 160px;
+    width: 26px;
+    height: 5px;
+  }
+  
+  .login-box {
+    width: 90%;
+    padding: 20px 15px;
+    max-width: 280px;
+  }
+  
+  .login-box h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  
+  .input-box {
+    margin: 25px 0;
+  }
+  
+  .input-box input {
+    height: 44px;
+    padding: 0 16px;
+    font-size: 0.95em;
+  }
+  
+  .input-box label {
+    font-size: 1em;
+    left: 16px;
+  }
+  
+  .btn-primary.pulse {
+    padding: 10px 0;
+    font-size: 0.95em;
+    margin-top: 25px;
+  }
+  
+  .instruction-text p {
+    font-size: 0.85em;
+  }
+}
+
+/* Ajustes responsivos para móviles muy pequeños */
+@media (max-width: 360px) {
+  .animation-container {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .animation-container span {
+    transform-origin: 140px;
+    width: 22px;
+    height: 4px;
+  }
+  
+  .login-box {
+    width: 95%;
+    padding: 18px 12px;
+    max-width: 260px;
+  }
+  
+  .login-box h2 {
+    font-size: 1.4em;
+  }
+  
+  .input-box input {
+    height: 42px;
+    padding: 0 14px;
+  }
+}
+
+/* Reset de estilos para evitar conflictos con el header/footer */
+.animation-container *,
+.login-box * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  line-height: normal;
+}
